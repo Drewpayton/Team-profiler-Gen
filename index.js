@@ -3,15 +3,13 @@ const inquirer = require("inquirer");
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
-// const Engineer = require('Engineer')
-// const Manager = require('Manager')
-// const Intern = require('Intern')
 const employees = []
 
 function startWrite() {
     writeHtml();
     addingMember()
 }
+
 
 function addingMember() {
 inquirer 
@@ -77,9 +75,10 @@ inquirer
             employees.push(newMember)
             newHtml(newMember)
             start()
-            
+
             function start() {
-                if (anotherMember === 'Yes') {
+                
+                if (moreRole.anotherMember === 'Yes') {
                     addingMember()
                 }else {
                     finishHtml()
