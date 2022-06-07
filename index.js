@@ -62,19 +62,20 @@ inquirer
                 ],
                 name: 'anotherMember'
             }])
-        .then(function(moreRole, anotherMember) {
+        .then(function(moreRole) {
             var newMember;
-
+        
             if (data.role === 'Engineer') {
-                newMember = new Engineer(data.name, data.id, data.role, moreRole.moreRole)
+                newMember = new Engineer(data.name, data.id, data.email, moreRole.moreRole)
             }else if(data.role === 'Intern') {
-                newMember = new Intern(data.name, data.id, data.role, moreRole.moreRole)
+                newMember = new Intern(data.name, data.id, data.email, moreRole.moreRole)
             }else {
-                newMember = new Manager(data.name, data.id, data.role, moreRole.moreRole)
+                newMember = new Manager(data.name, data.id, data.email, moreRole.moreRole)
             } 
             employees.push(newMember)
             newHtml(newMember)
             start()
+            console.log(newMember)
 
             function start() {
                 
@@ -82,6 +83,7 @@ inquirer
                     addingMember()
                 }else {
                     finishHtml()
+                    console.log('File created!')
                 }
             }
         })
@@ -111,15 +113,15 @@ inquirer
 
         fs.writeFile('Index.html', html, (err) => {if (err) throw err})
     }
-
+   
     function newHtml(newMember) {
-        return new Promise(function(resolve, deny) {
+        return new Promise(function() {
             const name = newMember.getName()
             const role = newMember.getRole();
             const id = newMember.getId();
             const email = newMember.getEmail()
             let newData;
-
+            
             if(role === 'Engineer') {
                 const github = newMember.getGithub();
                 newData = `<div class="col-lg-4">
@@ -129,14 +131,14 @@ inquirer
                            <p class="card-text text-light">${role}</p>
                          </div>
                          <div class="w-100 d-flex justify-content-center py-3 bg-light">
-                         <ul class="list-group list-group-flush border">
-                           <li class="list-group-item">ID: ${id}</li>
-                           <li class="list-group-item">Email: ${email}</li>
-                           <li class="list-group-item">Github: <a href="https://github.com/${github}" target="_blank">${github}</li>
-                         </ul>
-                       </div>
-                     </div>
-                 </div>`
+                            <ul class="list-group list-group-flush border">
+                            <li class="list-group-item">ID: ${id}</li>
+                            <li class="list-group-item">Email: <a href="mailto: ${email}">${email}</a></li>
+                            <li class="list-group-item">Github: <a href="https://github.com/${github}" target="_blank">${github}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>`
             }else if(role === 'Intern') {
                 const school = newMember.getSchool();
                 newData = `<div class="col-lg-4">
@@ -148,7 +150,7 @@ inquirer
                     <div class="w-100 d-flex justify-content-center py-3 bg-light">
                     <ul class="list-group list-group-flush border">
                       <li class="list-group-item">ID: ${id}</li>
-                      <li class="list-group-item">Email: ${email}</li>
+                      <li class="list-group-item">Email: <a href="mailto: ${email}">${email}</a></li>
                       <li class="list-group-item">School: ${school}</li>
                     </ul>
                   </div>
@@ -165,7 +167,7 @@ inquirer
                     <div class="w-100 d-flex justify-content-center py-3 bg-light">
                     <ul class="list-group list-group-flush border">
                       <li class="list-group-item">ID: ${id}</li>
-                      <li class="list-group-item">Email: ${email}</li>
+                      <li class="list-group-item">Email: <a href="mailto: ${email}">${email}</a></li>
                       <li class="list-group-item">Office Number: ${officeNum}</li>
                     </ul>
                   </div>
@@ -192,37 +194,3 @@ inquirer
 
 
     startWrite()
-
-
-
-
-
-
-
-
-                        // <div class="col-lg-4">
-                        //     <div class="card" style="width: 18rem;">
-                        //         <div class="card-body bg-primary">
-                        //           <h5 class="card-title text-light">Card title</h5>
-                        //           <p class="card-text text-light">Some quick example.</p>
-                        //         </div>
-                        //         <div class="w-100 d-flex justify-content-center py-3 bg-light">
-                        //         <ul class="list-group list-group-flush border">
-                        //           <li class="list-group-item">An item</li>
-                        //           <li class="list-group-item">A second item</li>
-                        //           <li class="list-group-item">A third item</li>
-                        //         </ul>
-                        //       </div>
-                        //     </div>
-                        // </div>
-
-
-
-
-                        // finishing html 
-
-            //             </div>
-            //     </div> 
-            // </div>
-            // </body>
-            // </html>
