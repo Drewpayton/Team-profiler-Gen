@@ -24,13 +24,4 @@ describe('Intern', () => {
             expect(obj.getSchool()).toBe(newSchool)
         })
     })
-
-
-
-
-
-
-
-
-
 })
