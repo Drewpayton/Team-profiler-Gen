@@ -75,7 +75,6 @@ inquirer
             employees.push(newMember)
             newHtml(newMember)
             start()
-            console.log(newMember)
 
             function start() {
                 
@@ -130,7 +129,7 @@ inquirer
                            <h5 class="card-title text-light">${name}</h5>
                            <p class="card-text text-light">${role}</p>
                          </div>
-                         <div class="w-100 d-flex justify-content-center py-3 bg-light">
+                         <div class="w-100 d-flex justify-content-center py-3 bg-light shadow">
                             <ul class="list-group list-group-flush border">
                             <li class="list-group-item">ID: ${id}</li>
                             <li class="list-group-item">Email: <a href="mailto: ${email}">${email}</a></li>
@@ -147,7 +146,7 @@ inquirer
                       <h5 class="card-title text-light">${name}</h5>
                       <p class="card-text text-light">${role}</p>
                     </div>
-                    <div class="w-100 d-flex justify-content-center py-3 bg-light">
+                    <div class="w-100 d-flex justify-content-center py-3 bg-light shadow">
                     <ul class="list-group list-group-flush border">
                       <li class="list-group-item">ID: ${id}</li>
                       <li class="list-group-item">Email: <a href="mailto: ${email}">${email}</a></li>
@@ -164,7 +163,7 @@ inquirer
                       <h5 class="card-title text-light">${name}</h5>
                       <p class="card-text text-light">${role}</p>
                     </div>
-                    <div class="w-100 d-flex justify-content-center py-3 bg-light">
+                    <div class="w-100 d-flex justify-content-center py-3 bg-light shadow">
                     <ul class="list-group list-group-flush border">
                       <li class="list-group-item">ID: ${id}</li>
                       <li class="list-group-item">Email: <a href="mailto: ${email}">${email}</a></li>
